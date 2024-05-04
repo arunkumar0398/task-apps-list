@@ -5,38 +5,21 @@
   text-align: center;
 } */
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chat-bubble--triangle {
+  z-index: 10;
+  position: absolute;
+  bottom: 50px;
+  left: 2.4%;
+  width: 0;
+  border-top: 38px solid #ffc815;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  transform: rotate(40deg);
+  cursor:pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+#shape {
+  width: 200px;
+  height: 200px;
+  fill: yellow;
 }
