@@ -9,13 +9,24 @@ import CompanyLogo from '../assets/Company-Logo.png';
 import { BsSearch, BsBell } from "react-icons/bs";
 import { formatDate } from '../utils/getFormattedDate';
 import { currentTime } from '../utils/getCurrentTime';
+import { useState, useEffect } from 'react';
 
 
 export const Dashboard = () => {
     const today = new Date();
     const formattedDate = formatDate(today); // Getting the date in format of 'Friday, March 6th'
+
+    const [date, setDate] = useState(currentTime()); // Getting the time in 24-hour format - 20:20
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+          setDate(currentTime());
+        }, 1000); // get the current time using setDate for a interval of 1 minute
     
-    const formattedTime = currentTime(); // Getting the time in 24-hour format - 20:20
+        return () => {
+          clearInterval(intervalId);
+        };
+      }, []);
 
     return (
         <div className="bg-no-repeat bg-cover bg-[url('./assets/Wallpaper.png')] w-[100vw] h-[100vh]">
@@ -38,7 +49,7 @@ export const Dashboard = () => {
             </div>
 
             <div className='time-and-date absolute left-[45%] top-[20%] text-center'>
-                <p className='time text-[#fff] text-6xl'>{formattedTime}</p>
+                <p className='time text-[#fff] text-6xl'>{date}</p>
 
                 <p className='date mt-2 text-[#000] font-semibold'>{formattedDate}</p>
             </div>
